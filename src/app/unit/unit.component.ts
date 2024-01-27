@@ -19,10 +19,10 @@ export class UnitComponent implements OnChanges {
 
   @Input() damage: number = 0;
   @Input() height: number = 300;
+  @Input() tryAsset!: string | null;
   @Input() name: string = 'laffa-warrior';
   @Input() human = false;
   @Input() health: number = 100;
-  // @Input() positionX = 0;
   @Input() select = 0;
   @Input() playing = false;
 

@@ -1,4 +1,10 @@
 <app-title></app-title>
+
+<!-- 
+<div class="timer-text">
+  {{startText}}
+</div> -->
+
 <div class="bg">
   <img style="width: 100%; height: 100%" src="assets/background.png" alt="" />
 </div>
@@ -13,6 +19,7 @@
     [damage]="damageScore1"
     [playing]="humanPlaying"
     [tryAssets]="tryAssets2"
+    [tryAsset]="tryAsset1"
   ></app-unit>
 
   <div style="position: absolute; right: 800px">
@@ -26,6 +33,7 @@
       [select]="select2"
       [height]="500"
       name="laffa-master"
+      [tryAsset]="tryAsset2"
     ></app-unit>
   </div>
   <!-- <img height="600" style="right: 100px" src="assets/laffa-master.png" alt="" /> -->

@@ -11,9 +11,6 @@ import { UnitComponent } from './unit/unit.component';
   styleUrl: './app.component.scss',
 })
 export class AppComponent implements OnInit {
-  ngOnInit(): void {
-    console.log('player2Assets', this.player2Assets);
-  }
   title = 'ggj-2024';
   select = 0;
   select2 = 0;
@@ -31,16 +28,32 @@ export class AppComponent implements OnInit {
 
   health1 = 100;
   health2 = 100;
-
+  startText = 'READY';
   humanPlaying = true;
   damageScore1 = 0;
   damageScore2 = 0;
+
+  ngOnInit(): void {
+    console.log('player2Assets', this.player2Assets);
+
+    setTimeout(() => {
+      this.startText = 'FIGHT';
+      setTimeout(() => {
+        this.startText = '';
+      }, 1000);
+    }, 1000);
+  }
+
+  tryAsset1: string | null = null;
+  tryAsset2: string | null = null;
+
   @HostListener('window:keydown', ['$event']) keyDown(event: KeyboardEvent) {
     if (this.humanPlaying) {
       if (event.code === 'Space') {
         const selectedAsset = this.assets[this.select];
         this.tryAssets.push(selectedAsset);
-
+        this.tryAsset1 = selectedAsset;
+        setTimeout(() => (this.tryAsset1 = null), 500);
         if (this.tryAssets.length === 3) {
           this.damageScore2 = this.calculateDamageScore(
             this.player2Assets,
@@ -74,7 +87,7 @@ export class AppComponent implements OnInit {
     // console.log('select', this.select);
 
     if (this.tryAssets.length >= 3) {
-      console.log('next round');
+      // console.log('next round');
 
       setTimeout(() => {
         this.completeRound();
@@ -85,7 +98,7 @@ export class AppComponent implements OnInit {
             alert('you win !!!');
           }
         }
-      }, 1000);
+      }, 1500);
     }
   }
 
@@ -133,6 +146,8 @@ export class AppComponent implements OnInit {
         const selectedAsset = this.assets[this.select2];
         this.tryAssets2.push(selectedAsset);
 
+        this.tryAsset2 = selectedAsset;
+        setTimeout(() => (this.tryAsset2 = null), 500);
         if (this.tryAssets2.length === 3) {
           this.damageScore1 = this.calculateDamageScore(
             this.player1Assets,
@@ -153,11 +168,11 @@ export class AppComponent implements OnInit {
         }
 
         if (this.tryAssets2.length < 3) {
-          setTimeout(() => {
-            this.enemyRound();
-          }, 1000);
+          setTimeout(() => this.enemyRound(), 1000);
         } else {
-          this.completeRound();
+          setTimeout(() => {
+            this.completeRound();
+          }, 1500);
         }
       }
     }, 300);

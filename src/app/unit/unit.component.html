@@ -3,6 +3,9 @@
   <progress style="height: 20px" [value]="health" max="100"></progress>
 
   <div *ngIf="playing" class="inventory">
+    <div *ngIf="tryAsset" [class.throw]="human" [class.throw2]="!human">
+      {{ tryAsset }}
+    </div>
     <div
       *ngFor="let item of assets; index as i"
       class="item"
@@ -12,7 +15,7 @@
       {{ item }}
     </div>
     <!-- <img height="200" src="assets/emoji-set.png" alt="" /> -->
-    <span [style.left.px]="10 + select * 42" class="arrow"> </span>
+    <span *ngIf="!tryAsset" [style.left.px]="10 + select * 42" class="arrow"> </span>
   </div>
 </div>
 

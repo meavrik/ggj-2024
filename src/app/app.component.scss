@@ -8,4 +8,34 @@
     height: 100vh;
     opacity: 0.8;
   }
+
+  .timer-text {
+    position: absolute;
+    top: 0;
+    font-size: 150px;
+    left: 0;
+    z-index: 99999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    font-family: "Honk", system-ui;
+    animation: show 2s ease-out;
+  }
+}
+
+@keyframes show {
+  0% {
+    scale: 0;
+  }
+  50% {
+    scale: 1;
+  }
+  52% {
+    scale: 0;
+  }
+  100% {
+    scale: 1;
+  }
 }
