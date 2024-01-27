@@ -1,0 +1,16 @@
+:host {
+  position: absolute;
+  color: gold;
+  top: 0;
+  z-index: 99;
+  display: block;
+  width: 100vw;
+  font-family: "Honk", system-ui;
+  h1 {
+    font-size: 100px;
+    margin: 0;
+    text-align: center;
+   /*  -webkit-text-stroke-width: 3px;
+    -webkit-text-stroke-color: black; */
+  }
+}
